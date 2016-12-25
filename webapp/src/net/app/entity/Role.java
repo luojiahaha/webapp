@@ -24,7 +24,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @version 3.0
  */
 @Entity
-@Table(name = "xx_role")
+@Table(name = "com_role")
 @SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_role_sequence")
 public class Role extends BaseEntity {
 
@@ -113,7 +113,7 @@ public class Role extends BaseEntity {
 	 * @return 权限
 	 */
 	@ElementCollection
-	@CollectionTable(name = "xx_role_authority")
+	@CollectionTable(name = "com_role_authority")
 	public List<String> getAuthorities() {
 		return authorities;
 	}

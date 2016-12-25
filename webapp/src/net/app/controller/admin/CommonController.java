@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import net.app.entity.Area;
 import net.app.service.AreaService;
 import net.app.service.CaptchaService;
-import net.app.service.OrderService;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -51,8 +50,6 @@ public class CommonController implements ServletContextAware {
 	private AreaService areaService;
 	@Resource(name = "captchaServiceImpl")
 	private CaptchaService captchaService;
-	@Resource(name = "orderServiceImpl")
-	private OrderService orderService;
 
 	/** servletContext */
 	private ServletContext servletContext;
@@ -84,8 +81,6 @@ public class CommonController implements ServletContextAware {
 		model.addAttribute("osArch", System.getProperty("os.arch"));
 		model.addAttribute("serverInfo", servletContext.getServerInfo());
 		model.addAttribute("servletVersion", servletContext.getMajorVersion() + "." + servletContext.getMinorVersion());
-		model.addAttribute("waitingPaymentOrderCount", orderService.waitingPaymentCount(null));
-		model.addAttribute("waitingShippingOrderCount", orderService.waitingShippingCount(null));
 		return "/admin/common/index";
 	}
 

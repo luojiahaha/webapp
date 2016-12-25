@@ -116,9 +116,6 @@
 				<entry key="execute_time" value-ref="executeTimeDirective" />
 				<entry key="flash_message" value-ref="flashMessageDirective" />
 				<entry key="pagination" value-ref="paginationDirective" />
-				<entry key="seo" value-ref="seoDirective" />
-				<entry key="navigation_list" value-ref="navigationListDirective" />
-				<entry key="tag_list" value-ref="tagListDirective" />
 			</map>
 		</property>
 	</bean>

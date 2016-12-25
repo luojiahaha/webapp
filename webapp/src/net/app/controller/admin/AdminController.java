@@ -79,7 +79,6 @@ public class AdminController extends BaseController {
 		admin.setLockedDate(null);
 		admin.setLoginDate(null);
 		admin.setLoginIp(null);
-		admin.setOrders(null);
 		adminService.save(admin);
 		addFlashMessage(redirectAttributes, SUCCESS_MESSAGE);
 		return "redirect:list.jhtml";

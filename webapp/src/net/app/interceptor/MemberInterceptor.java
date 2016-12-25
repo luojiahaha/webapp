@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.app.Principal;
-import net.app.entity.Member;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
- * Interceptor - 会员权限
  * 
  * @author Luoj Team
  * @version 3.0
@@ -28,8 +26,6 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 	/** "重定向URL"参数名称 */
 	private static final String REDIRECT_URL_PARAMETER_NAME = "redirectUrl";
 
-	/** "会员"属性名称 */
-	private static final String MEMBER_ATTRIBUTE_NAME = "member";
 
 	/** 默认登录URL */
 	private static final String DEFAULT_LOGIN_URL = "/login.jhtml";
@@ -44,7 +40,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
-		Principal principal = (Principal) session.getAttribute(Member.PRINCIPAL_ATTRIBUTE_NAME);
+		Principal principal = (Principal) session.getAttribute("11");
 		if (principal != null) {
 			return true;
 		} else {

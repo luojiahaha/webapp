@@ -74,29 +74,6 @@ public class FileServiceImpl implements FileService, ServletContextAware {
 	}
 
 	public String upload(FileType fileType, MultipartFile multipartFile, boolean async) {
-		if (multipartFile == null) {
-			return null;
-		}
-		Setting setting = SettingUtils.get();
-		String uploadPath;
-		if (fileType == FileType.flash) {
-			uploadPath = setting.getFlashUploadPath();
-		} else if (fileType == FileType.media) {
-			uploadPath = setting.getMediaUploadPath();
-		} else if (fileType == FileType.file) {
-			uploadPath = setting.getFileUploadPath();
-		} else {
-			uploadPath = setting.getImageUploadPath();
-		}
-		try {
-			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("uuid", UUID.randomUUID().toString());
-			String path = FreemarkerUtils.process(uploadPath, model);
-			String destPath = path + UUID.randomUUID() + "." + FilenameUtils.getExtension(multipartFile.getOriginalFilename());
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return null;
 	}
 

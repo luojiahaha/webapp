@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * @version 3.0
  */
 @Entity
-@Table(name = "xx_sn")
+@Table(name = "com_sn")
 @SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_sn_sequence")
 public class Sn extends BaseEntity {
 

@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.PreRemove;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -27,7 +25,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @version 3.0
  */
 @Entity
-@Table(name = "xx_admin")
+@Table(name = "com_admin")
 @SequenceGenerator(name = "sequenceGenerator", sequenceName = "xx_admin_sequence")
 public class Admin extends BaseEntity {
 
@@ -68,9 +66,6 @@ public class Admin extends BaseEntity {
 
 	/** 角色 */
 	private Set<Role> roles = new HashSet<Role>();
-
-	/** 订单 */
-	private Set<Order> orders = new HashSet<Order>();
 
 	/**
 	 * 获取用户名
@@ -306,7 +301,7 @@ public class Admin extends BaseEntity {
 	 */
 	@NotEmpty
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "xx_admin_role")
+	@JoinTable(name = "com_admin_role")
 	public Set<Role> getRoles() {
 		return roles;
 	}
@@ -321,38 +316,6 @@ public class Admin extends BaseEntity {
 		this.roles = roles;
 	}
 
-	/**
-	 * 获取订单
-	 * 
-	 * @return 订单
-	 */
-	@OneToMany(mappedBy = "operator", fetch = FetchType.LAZY)
-	public Set<Order> getOrders() {
-		return orders;
-	}
 
-	/**
-	 * 设置订单
-	 * 
-	 * @param orders
-	 *            订单
-	 */
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
-	}
-
-	/**
-	 * 删除前处理
-	 */
-	@PreRemove
-	public void preRemove() {
-		Set<Order> orders = getOrders();
-		if (orders != null) {
-			for (Order order : orders) {
-				order.setLockExpire(null);
-				order.setOperator(null);
-			}
-		}
-	}
 
 }

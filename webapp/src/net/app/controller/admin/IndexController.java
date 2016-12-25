@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import net.app.entity.Article;
 import net.app.service.SearchService;
 
 import org.springframework.stereotype.Controller;
@@ -67,7 +66,6 @@ public class IndexController extends BaseController {
 		boolean isCompleted = true;
 		if (buildType == BuildType.article) {
 			if (first == 0 && isPurge != null && isPurge) {
-				searchService.purge(Article.class);
 			}
 		} else if (buildType == BuildType.product) {
 		}

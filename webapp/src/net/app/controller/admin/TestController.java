@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 
 import net.app.Message;
 import net.app.Pageable;
-import net.app.entity.Admin;
 import net.app.entity.Test;
 import net.app.service.TestService;
 

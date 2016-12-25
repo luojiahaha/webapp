@@ -11,7 +11,6 @@ import javax.validation.Validator;
 import net.app.DateEditor;
 import net.app.Message;
 import net.app.Setting;
-import net.app.entity.Log;
 import net.app.template.directive.FlashMessageDirective;
 import net.app.util.SettingUtils;
 import net.app.util.SpringUtils;
@@ -152,17 +151,5 @@ public class BaseController {
 		}
 	}
 
-	/**
-	 * 添加日志
-	 * 
-	 * @param content
-	 *            内容
-	 */
-	protected void addLog(String content) {
-		if (content != null) {
-			RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
-			requestAttributes.setAttribute(Log.LOG_CONTENT_ATTRIBUTE_NAME, content, RequestAttributes.SCOPE_REQUEST);
-		}
-	}
 
 }

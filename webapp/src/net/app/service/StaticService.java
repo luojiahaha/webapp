@@ -2,9 +2,6 @@ package net.app.service;
 
 import java.util.Map;
 
-import net.app.entity.Article;
-import net.app.entity.Product;
-
 /**
  * Service - 静态化
  * 
@@ -37,25 +34,9 @@ public interface StaticService {
 	 */
 	int build(String templatePath, String staticPath);
 
-	/**
-	 * 生成静态
-	 * 
-	 * @param article
-	 *            文章
-	 * @return 生成数量
-	 */
-	int build(Article article);
 
-	/**
-	 * 生成静态
-	 * 
-	 * @param product
-	 *            商品
-	 * @return 生成数量
-	 */
-	int build(Product product);
+
 	
-	void buildPhone(Product product);
 	/**
 	 * 生成首页静态
 	 * 
@@ -93,23 +74,7 @@ public interface StaticService {
 	 */
 	int delete(String staticPath);
 
-	/**
-	 * 删除静态
-	 * 
-	 * @param article
-	 *            文章
-	 * @return 删除数量
-	 */
-	int delete(Article article);
-
-	/**
-	 * 删除静态
-	 * 
-	 * @param product
-	 *            商品
-	 * @return 删除数量
-	 */
-	int delete(Product product);
+	
 
 	/**
 	 * 删除首页静态

@@ -61,9 +61,7 @@ $().ready(function() {
 			<th>
 				<div id="nav" class="nav">
 					<ul>
-						<li>
-							<a href="${base}/" target="_blank">${message("admin.main.home")}</a>
-						</li>
+						
 						[#list ["admin:setting", "admin:area", "admin:paymentMethod", "admin:shippingMethod", "admin:deliveryCorp", "admin:paymentPlugin", "admin:storagePlugin", "admin:admin", "admin:role", "admin:message", "admin:log"] as permission]
 							[@shiro.hasPermission name = permission]
 								<li>
@@ -72,7 +70,14 @@ $().ready(function() {
 								[#break /]
 							[/@shiro.hasPermission]
 						[/#list]
-						
+						[#list ["admin:setting", "admin:area", "admin:paymentMethod", "admin:shippingMethod", "admin:deliveryCorp", "admin:paymentPlugin", "admin:storagePlugin", "admin:admin", "admin:role", "admin:message", "admin:log"] as permission]
+							[@shiro.hasPermission name = permission]
+								<li>
+									<a href="#system">${message("admin.main.systemNav")}</a>
+								</li>
+								[#break /]
+							[/@shiro.hasPermission]
+						[/#list]
 					</ul>
 				</div>
 				<div class="link">

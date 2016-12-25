@@ -49,10 +49,6 @@ public class AreaController extends BaseController {
 		area.setFullName(null);
 		area.setTreePath(null);
 		area.setChildren(null);
-		area.setMembers(null);
-		area.setReceivers(null);
-		area.setOrders(null);
-		area.setDeliveryCenters(null);
 		areaService.save(area);
 		addFlashMessage(redirectAttributes, SUCCESS_MESSAGE);
 		return "redirect:list.jhtml";
