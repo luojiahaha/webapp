@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>${message("admin.role.list")} - Powered By LFX</title>
+<title>${message("admin.admin.list")} - Powered By LFX</title>
 <meta name="author" content="LFX Team" />
 <meta name="copyright" content="LFX" />
 <link href="${base}/resources/admin/css/common.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${base}/resources/admin/js/jquery.js"></script>
+<script type="text/javascript" src="${base}/resources/admin/js/common.js"></script>
 <script type="text/javascript" src="${base}/resources/admin/js/list.js"></script>
 <script type="text/javascript">
 $().ready(function() {
@@ -18,7 +19,7 @@ $().ready(function() {
 </head>
 <body>
 	<div class="path">
-		<a href="${base}/admin/common/index.jhtml">${message("admin.path.index")}</a> &raquo; ${message("admin.role.list")} <span>(${message("admin.page.total", page.total)})</span>
+		<a href="${base}/admin/common/index.jhtml">${message("admin.path.index")}</a> &raquo; ${message("admin.admin.list")} <span>(${message("admin.page.total", page.total)})</span>
 	</div>
 	<form id="listForm" action="list.jhtml" method="get">
 		<div class="bar">
@@ -63,7 +64,13 @@ $().ready(function() {
 				<div class="popupMenu">
 					<ul id="searchPropertyOption">
 						<li>
-							<a href="javascript:;"[#if page.searchProperty == "name"] class="current"[/#if] val="name">${message("Role.name")}</a>
+							<a href="javascript:;"[#if page.searchProperty == "username"] class="current"[/#if] val="username">${message("Admin.username")}</a>
+						</li>
+						<li>
+							<a href="javascript:;"[#if page.searchProperty == "email"] class="current"[/#if] val="email">${message("Admin.email")}</a>
+						</li>
+						<li>
+							<a href="javascript:;"[#if page.searchProperty == "name"] class="current"[/#if] val="name">${message("Admin.name")}</a>
 						</li>
 					</ul>
 				</div>
@@ -75,42 +82,30 @@ $().ready(function() {
 					<input type="checkbox" id="selectAll" />
 				</th>
 				<th>
-					<a href="javascript:;" class="sort" name="name">${message("Role.name")}</a>
+					<a href="javascript:;" class="sort" name="username">${message("Test.username")}</a>
 				</th>
 				<th>
-					<a href="javascript:;" class="sort" name="isSystem">${message("Role.isSystem")}</a>
+					<a href="javascript:;" class="sort" name="password">${message("Test.password")}</a>
 				</th>
-				<th>
-					<span>${message("Role.description")}</span>
-				</th>
-				<th>
-					<a href="javascript:;" class="sort" name="createDate">${message("admin.common.createDate")}</a>
-				</th>
+				
 				<th>
 					<span>${message("admin.common.handle")}</span>
 				</th>
 			</tr>
-			[#list page.content as role]
+			[#list page.content as admin]
 				<tr>
 					<td>
-						<input type="checkbox" name="ids"[#if role.isSystem] title="${message("admin.role.deleteSystemNotAllowed")}" disabled="disabled"[#else] value="${role.id}"[/#if] />
+						<input type="checkbox" name="ids" value="${admin.id}" />
 					</td>
 					<td>
-						${role.name}
+						${admin.username}
 					</td>
 					<td>
-						${message(role.isSystem?string('admin.common.true', 'admin.common.false'))}
+						${admin.password}
 					</td>
+					
 					<td>
-						[#if role.description??]
-							<span title="${role.description}">${abbreviate(role.description, 50, "...")}</span>
-						[/#if]
-					</td>
-					<td>
-						<span title="${role.createDate?string("yyyy-MM-dd HH:mm:ss")}">${role.createDate}</span>
-					</td>
-					<td>
-						<a href="edit.jhtml?id=${role.id}">[${message("admin.common.edit")}]</a>
+						<a href="edit.jhtml?id=${admin.id}">修改</a>
 					</td>
 				</tr>
 			[/#list]

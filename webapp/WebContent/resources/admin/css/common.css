@@ -24,9 +24,6 @@ body {
 	_width: expression(document.body.clientWidth <= 1000 ? "1000px": "auto");
 	font: 12px tahoma, Arial, Verdana, sans-serif;
 	color: #666666;
-	background-color: #ffffff;
-	_background-image: url(about: blank);
-	_background-attachment: fixed;
 }
 
 a {
@@ -983,7 +980,7 @@ div.path span {
 }
 
 div.bar {
-	height: 28px;
+	height: 38px;
 	padding: 4px;
 	overflow: hidden;
 }

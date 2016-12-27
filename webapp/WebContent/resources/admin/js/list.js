@@ -73,7 +73,7 @@ $().ready( function() {
 		var offset = $this.offset();
 		var $menuWrap = $this.closest("div.menuWrap");
 		var $popupMenu = $menuWrap.children("div.popupMenu");
-		$popupMenu.css({left: offset.left, top: offset.top + $this.height() + 2}).show();
+		$popupMenu.css({left: offset.left-230, top: offset.top + $this.height() + 2-132}).show();
 		$menuWrap.mouseleave(function() {
 			$popupMenu.hide();
 		});
@@ -106,7 +106,7 @@ $().ready( function() {
 		var offset = $this.offset();
 		var $menuWrap = $this.closest("div.menuWrap");
 		var $popupMenu = $menuWrap.children("div.popupMenu");
-		$popupMenu.css({left: offset.left - 1, top: offset.top + $this.height() + 2}).show();
+		$popupMenu.css({left: offset.left - 232, top: offset.top + $this.height() + 2 -132}).show();
 		$menuWrap.mouseleave(function() {
 			$popupMenu.hide();
 		});

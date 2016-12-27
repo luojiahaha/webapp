@@ -3,132 +3,110 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>${message("admin.main.title")} - Powered By LFX</title>
+<title></title>
 <meta name="author" content="LFX Team" />
 <meta name="copyright" content="LFX" />
-<link href="${base}/resources/admin/css/common.css" rel="stylesheet" type="text/css" />
-<link href="${base}/resources/admin/css/main.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${base}/resources/admin/js/jquery.js"></script>
-<style type="text/css">
-*{
-	font: 12px tahoma, Arial, Verdana, sans-serif;
-}
-html, body {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
-</style>
-<script type="text/javascript">
-$().ready(function() {
+ <link href="${base}/resources/bootstrap/css/bootstrap.min.css?v=3.3.0" rel="stylesheet">
+    <link href="${base}/resources/bootstrap/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
 
-	var $nav = $("#nav a:not(:last)");
-	var $menu = $("#menu dl");
-	var $menuItem = $("#menu a");
-	
-	$nav.click(function() {
-		var $this = $(this);
-		$nav.removeClass("current");
-		$this.addClass("current");
-		var $currentMenu = $($this.attr("href"));
-		$menu.hide();
-		$currentMenu.show();
-		return false;
-	});
-	
-	$menuItem.click(function() {
-		var $this = $(this);
-		$menuItem.removeClass("current");
-		$this.addClass("current");
-	});
+    <!-- Morris -->
+    <link href="${base}/resources/bootstrap/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
 
-});
-</script>
+    <!-- Gritter -->
+    <link href="${base}/resources/bootstrap/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="${base}/resources/bootstrap/css/animate.css" rel="stylesheet">
+    <link href="${base}/resources/bootstrap/css/style.css?v=2.0.0" rel="stylesheet">
+
 </head>
 <body>
-	<script type="text/javascript">
-		if (self != top) {
-			top.location = self.location;
-		};
-	</script>
-	<table class="main">
-		<tr>
-			<th class="logo">
-				<a href="main.jhtml">
-					<img src="${base}/resources/admin/images/header_logo.gif" alt="LFX" />
-				</a>
-			</th>
-			<th>
-				<div id="nav" class="nav">
-					<ul>
+<div id="wrapper">
+       <!-- 左边导航-->
+ 		[#include "admin/common/left.ftl"]
+	      <div id="page-wrapper" class="gray-bg dashbard-1">
+		            <div class="row border-bottom">
+		            [#include "admin/common/header.ftl"]
+		            </div>
+		            
+					<div class="wrapper wrapper-content">
 						
-						[#list ["admin:setting", "admin:area", "admin:paymentMethod", "admin:shippingMethod", "admin:deliveryCorp", "admin:paymentPlugin", "admin:storagePlugin", "admin:admin", "admin:role", "admin:message", "admin:log"] as permission]
-							[@shiro.hasPermission name = permission]
-								<li>
-									<a href="#system">${message("admin.main.systemNav")}</a>
-								</li>
-								[#break /]
-							[/@shiro.hasPermission]
-						[/#list]
-						[#list ["admin:setting", "admin:area", "admin:paymentMethod", "admin:shippingMethod", "admin:deliveryCorp", "admin:paymentPlugin", "admin:storagePlugin", "admin:admin", "admin:role", "admin:message", "admin:log"] as permission]
-							[@shiro.hasPermission name = permission]
-								<li>
-									<a href="#system">${message("admin.main.systemNav")}</a>
-								</li>
-								[#break /]
-							[/@shiro.hasPermission]
-						[/#list]
-					</ul>
-				</div>
-				<div class="link">
-					<a href="http://www.webapp.net" target="_blank">${message("admin.main.official")}</a>|
-					<a href="http://bbs.webapp.net" target="_blank">${message("admin.main.bbs")}</a>|
-					<a href="http://www.webapp.net/about.html" target="_blank">${message("admin.main.about")}</a>
-				</div>
-				<div class="link">
-					<strong>[@shiro.principal /]</strong>
-					${message("admin.main.hello")}!
-					<a href="../profile/edit.jhtml" target="iframe">[${message("admin.main.profile")}]</a>
-					<a href="../logout.jsp" target="_top">[${message("admin.main.logout")}]</a>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<td id="menu" class="menu">
-				
-				<dl id="system">
-					[@shiro.hasPermission name="admin:test"]
-						<dd>
-							<a href="../test/list.jhtml" target="iframe">${message("admin.main.test")}</a>
-						</dd>
-					[/@shiro.hasPermission]
+					</div>
 					
-					[@shiro.hasPermission name="admin:area"]
-						<dd>
-							<a href="../area/list.jhtml" target="iframe">${message("admin.main.area")}</a>
-						</dd>
-					[/@shiro.hasPermission]
-					
-					
-					
-					[@shiro.hasPermission name="admin:admin"]
-						<dd>
-							<a href="../admin/list.jhtml" target="iframe">${message("admin.main.admin")}</a>
-						</dd>
-					[/@shiro.hasPermission]
-					[@shiro.hasPermission name="admin:role"]
-						<dd>
-							<a href="../role/list.jhtml" target="iframe">${message("admin.main.role")}</a>
-						</dd>
-					[/@shiro.hasPermission]
-					
-				</dl>
-				
-			</td>
-			<td>
-				<iframe id="iframe" name="iframe" src="index.jhtml" frameborder="0"></iframe>
-			</td>
-		</tr>
-	</table>
+					<div class="footer">
+		            [#include "admin/common/footer.ftl"]
+		            </div>
+			 </div>
+              
+                    
+
+
+      
+		</div>
+
+
+
+     <!-- Mainly scripts -->
+    <script src="${base}/resources/bootstrap/js/jquery-2.1.1.min.js"></script>
+    <script src="${base}/resources/bootstrap/js/bootstrap.min.js?v=3.3.0"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="${base}/resources/bootstrap/js/plugins/flot/jquery.flot.js"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/flot/jquery.flot.symbol.js"></script>
+
+    <!-- Peity -->
+    <script src="${base}/resources/bootstrap/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="${base}/resources/bootstrap/js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="${base}/resources/bootstrap/js/hplus.js?v=2.0.0"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="${base}/resources/bootstrap/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Jvectormap -->
+    <script src="${base}/resources/bootstrap/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="${base}/resources/bootstrap/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- EayPIE -->
+    <script src="${base}/resources/bootstrap/js/plugins/easypiechart/jquery.easypiechart.js"></script>
+
+    <!-- Sparkline -->
+    <script src="${base}/resources/bootstrap/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="${base}/resources/bootstrap/js/demo/sparkline-demo.js"></script>
+    
+    
+    <!-- 右上角弹出层 -->
+    <script src="${base}/resources/bootstrap/js/plugins/gritter/jquery.gritter.min.js"></script>
+    
+    
+    
+    
+    
+    
+    <script>
+        $(document).ready(function () {
+            WinMove();
+            setTimeout(function () {
+                $.gritter.add({
+                    title: '您有2条未读信息',
+                    text: '请前往<a href="#" class="text-warning">收件箱</a>查看今日任务',
+                    time: 2000
+                });
+            }, 1000);
+
+
+           
+        });
+    </script>
+
 </body>
 </html>
